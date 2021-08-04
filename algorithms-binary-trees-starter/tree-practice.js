@@ -1,15 +1,29 @@
 // Practice problems on binary trees
 
 function findMinBST (rootNode) {
-
-  // Fill this in
-
+  let smallest = rootNode.val;
+  let queue = [];
+  queue.push(rootNode);
+  while (queue.length){
+      let node = queue.shift();
+      if (node.val < smallest){smallest = node.val;}
+      if (node.left){queue.push(node.left);}
+      if (node.right){queue.push(node.right)};
+    }
+    return smallest
 }
 
 function findMaxBST (rootNode) {
-
-  // Fill this in
-
+  let largest = rootNode.val;
+  let queue = [];
+  queue.push(rootNode);
+  while (queue.length){
+      let node = queue.shift();
+      if (node.val > largest){largest = node.val;}
+      if (node.left){queue.push(node.left);}
+      if (node.right){queue.push(node.right)};
+    }
+    return largest
 }
 
 function findMinBT (rootNode) {
