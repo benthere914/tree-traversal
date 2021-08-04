@@ -6,11 +6,10 @@ function findMinBST (rootNode) {
   queue.push(rootNode);
   while (queue.length){
       let node = queue.shift();
-      if (node.val < smallest){smallest = node.val;}
-      if (node.left){queue.push(node.left);}
-      if (node.right){queue.push(node.right)};
+      smallest = node.val;
+      if (node.left){queue.push(node.left);};
     }
-    return smallest
+    return smallest;
 }
 
 function findMaxBST (rootNode) {
@@ -19,22 +18,36 @@ function findMaxBST (rootNode) {
   queue.push(rootNode);
   while (queue.length){
       let node = queue.shift();
-      if (node.val > largest){largest = node.val;}
-      if (node.left){queue.push(node.left);}
-      if (node.right){queue.push(node.right)};
+      largest = node.val;
+      if (node.right){queue.push(node.right);};
     }
-    return largest
+    return largest;
 }
 
 function findMinBT (rootNode) {
-
-  // Fill this in
-
+  let smallest = rootNode.val;
+  let queue = [];
+  queue.push(rootNode);
+  while (queue.length){
+      let node = queue.shift();
+      if (node.val < smallest){smallest = node.val;};
+      if (node.left){queue.push(node.left);};
+      if (node.right){queue.push(node.right);};
+    }
+    return smallest;
 }
 
 function findMaxBT (rootNode) {
-
-  // Fill this in
+  let largest = rootNode.val;
+  let queue = [];
+  queue.push(rootNode);
+  while (queue.length){
+      let node = queue.shift();
+      if (node.val > largest){largest = node.val;};
+      if (node.right){queue.push(node.right);};
+      if (node.left){queue.push(node.left);};
+    }
+    return largest;
 
 }
 
