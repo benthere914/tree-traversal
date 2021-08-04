@@ -13,15 +13,25 @@ class BinarySearchTree {
     this.root = null;
   }
 
-  insert(val, currentNode=this.root) {
+  insert(val, root=this.root) {
+      //base case
+      if (!root){this.root = new TreeNode(val);return}
+      //left branch treversal
+      if (val < root.val) {if (!root.left){root.left = new TreeNode(val)}else {this.insert(val, root.left)}}
+      //right branch treversal
+      else if (val > root.val){if (!root.right){root.right = new TreeNode(val)}else {this.insert(val, root.right)}}
+      // returns if val = root.val
+      else {return}
 
-    // Fill this in
 
   }
 
-  search(val) {
+  search(val,root = this.root) {
+    if (!root) {return false}
+    else if (val < root.val) {return this.search(val, root.left)}
+    else if (val > root.val){return this.search(val, root.right)}
+    else {return true}
 
-    // Fill this in
 
   }
 
@@ -40,27 +50,36 @@ class BinarySearchTree {
 
   }
 
-  preOrderTraversal(currentNode=this.root) {
+  preOrderTraversal(root=this.root) {
 
-    // Fill this in
-
-  }
-
-
-  inOrderTraversal(currentNode=this.root) {
-
-    // Fill this in
+    if (root){
+      console.log(root.val);
+      this.preOrderTraversal(root.left);
+      this.preOrderTraversal(root.right);
+    }
 
   }
 
 
-  postOrderTraversal(currentNode=this.root) {
+  inOrderTraversal(root=this.root) {
 
-    // Fill this in
+    if (root){
+      this.inOrderTraversal(root.left);
+      console.log(root.val);
+      this.inOrderTraversal(root.right);
+
+    }
+  }
+
+  postOrderTraversal(root=this.root) {
+    if (root){
+      this.postOrderTraversal(root.left);
+      this.postOrderTraversal(root.right);
+      console.log(root.val)
 
   }
 
 
 }
-
+}
 module.exports = [BinarySearchTree, TreeNode];
