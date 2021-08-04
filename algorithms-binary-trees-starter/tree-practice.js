@@ -51,21 +51,40 @@ function findMaxBT (rootNode) {
 
 }
 
-function getHeight (rootNode) {
 
-  // Fill this in
+function getHeight(node){
+   if (!node){return -1;}
+   else
+   {
+      let lDepth = getHeight(node.left);
+      let rDepth = getHeight(node.right);
 
+      if (lDepth > rDepth){return (lDepth + 1)}
+      else{return (rDepth + 1)}
+   }
 }
 
-function countNodes (rootNode) {
 
-  // Fill this in
+
+function countNodes (rootNode) {
+  let count = 0;
+  let queue = [];
+  queue.push(rootNode);
+  while (queue.length){
+      let node = queue.shift();
+      count++;
+      if (node.left){queue.push(node.left);};
+      if (node.right){queue.push(node.right);};
+    }
+    return count;
 
 }
 
 function balancedTree (rootNode) {
+  let height = getHeight(rootNode);
+  let nodes = countNodes(rootNode);
+  return (Math.floor(Math.log2(nodes)) === height);
 
-  // Fill this in
 
 }
 
